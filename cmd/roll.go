@@ -22,48 +22,48 @@ package cmd
 
 import (
 	"fmt"
+	"github.com/spf13/cobra"
 	"math/rand"
 	"os"
-    "strings"
-    "strconv"
-    "time"
-	"github.com/spf13/cobra"
+	"strconv"
+	"strings"
+	"time"
 )
 
-func checkerr( err error ) {
+func checkerr(err error) {
 	if err != nil {
-    	fmt.Println(err)
-    	os.Exit(2)
+		fmt.Println(err)
+		os.Exit(2)
 
-    }
+	}
 }
 
-func roll_dice( dice string ) {
+func roll_dice(dice string) {
 	var dice_result int = 0
-    // This will be an array of dice
-    dice_array := strings.Split( dice, "d" )
-    // use strconv to convert arrays indexes to Integers
-    dice_num, err := strconv.Atoi( dice_array[0] )
-    // Check for errors.
-    checkerr(err)
-    dice_type, err := strconv.Atoi( dice_array[1] )
-    checkerr(err)
-    // loop through the number of dice provided
-    for i := 1; i <= dice_num; i++ {
-    	// Generate a seed to get a truely random number.
-    	// otherwise it'll be the same number every build.
-    	seed_number := rand.New(rand.NewSource(time.Now().UnixNano()))
-    	// Use the seed to generate an Integer to the maximum of what the
-    	// dice type is. 
-	    number_result := seed_number.Intn(dice_type)
-	    // Inciment by 1 so that there are no zeros.
-	    number_result = number_result + 1
-	    // Display the rolls. 
-	    fmt.Println( "Roll #",i,":", number_result ) 
-	    // Keep a total of the dice numbers. 
-	    dice_result = dice_result + number_result 
-    }
-    fmt.Println( "Total:", dice_result )
+	// This will be an array of dice
+	dice_array := strings.Split(dice, "d")
+	// use strconv to convert arrays indexes to Integers
+	dice_num, err := strconv.Atoi(dice_array[0])
+	// Check for errors.
+	checkerr(err)
+	dice_type, err := strconv.Atoi(dice_array[1])
+	checkerr(err)
+	// loop through the number of dice provided
+	for i := 1; i <= dice_num; i++ {
+		// Generate a seed to get a truely random number.
+		// otherwise it'll be the same number every build.
+		seed_number := rand.New(rand.NewSource(time.Now().UnixNano()))
+		// Use the seed to generate an Integer to the maximum of what the
+		// dice type is.
+		number_result := seed_number.Intn(dice_type)
+		// Inciment by 1 so that there are no zeros.
+		number_result = number_result + 1
+		// Display the rolls.
+		fmt.Println("Roll #", i, ":", number_result)
+		// Keep a total of the dice numbers.
+		dice_result = dice_result + number_result
+	}
+	fmt.Println("Total:", dice_result)
 }
 
 // rollCmd represents the roll command

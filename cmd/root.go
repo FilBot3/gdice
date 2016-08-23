@@ -37,9 +37,9 @@ var RootCmd = &cobra.Command{
 	Long: `Rolls a set of dice provided by the command line
 in the format of #d#, similar to 2d6. 
 Then the result and individual dice numbers will be displaye. `,
-// Uncomment the following line if your bare application
-// has an action associated with it:
-//	Run: func(cmd *cobra.Command, args []string) { },
+	// Uncomment the following line if your bare application
+	// has an action associated with it:
+	//	Run: func(cmd *cobra.Command, args []string) { },
 }
 
 // Execute adds all child commands to the root command sets flags appropriately.
