@@ -20,7 +20,7 @@
 
 package main
 
-import "predatorian/gdice/cmd"
+import "github.com/predatorian3/gdice/cmd"
 
 func main() {
 	cmd.Execute()
